@@ -1,4 +1,5 @@
 export type InventoryData = {
-  itemIds: string[];
+  ownedItemIds: string[];
+  equippedBackgroundId: string;
+  equippedBgmId: string | null;
 };
-

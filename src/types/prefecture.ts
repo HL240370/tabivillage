@@ -1,5 +1,9 @@
 export type PrefectureVisitData = {
-  prefectureId: string;
-  unlockedAt: string;
+  id: string;
+  nameKo: string;
+  nameJa: string;
+  region: string;
+  isVisited: boolean;
+  visitedAt: number | null;
+  rewardIds: string[];
 };
-
