@@ -1,5 +1,8 @@
 export type VillageData = {
-  backgroundId?: string;
-  bgmId?: string;
+  backgroundId: string;
+  housePositions: {
+    houseId: string;
+    x: number;
+    y: number;
+  }[];
 };
-

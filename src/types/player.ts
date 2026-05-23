@@ -1,6 +1,6 @@
 export type PlayerData = {
   level: number;
-  exp: number;
+  totalExp: number;
   gold: number;
 };
 

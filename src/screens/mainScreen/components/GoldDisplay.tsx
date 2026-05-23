@@ -9,4 +9,3 @@ export function GoldDisplay({ gold }: GoldDisplayProps) {
 }
 
 export default GoldDisplay;
-
