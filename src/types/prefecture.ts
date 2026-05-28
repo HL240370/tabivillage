@@ -1,11 +1,27 @@
-export type PrefectureVisitData = {
-  id: string;
+import type { JapanRegionId } from "./regions";
+import type { RewardId } from "./rewards";
+
+export type Prefecture = {
+  id: PrefectureId;
   nameKo: string;
   nameJa: string;
-  region: string;
+  regionId: JapanRegionId;
+
+  // 유저 상태
   isVisited: boolean;
   visitedAt: number | null;
-  rewardIds: string[];
+
+  // 이 도도부현 방문으로 얻는 보상
+  rewardIds: RewardId[];
+};
+
+export type PrefectureVisitData = {
+  prefectureId: PrefectureId;
+  regionId: JapanRegionId;
+  visitCount: number;
+  firstVisitedAt: number | null;
+  lastVisitedAt: number | null;
+  earnedRewardIds: RewardId[];
 };
 
 //都道府県の管理
@@ -56,16 +72,4 @@ export type PrefectureId =
   | "oita"
   | "miyazaki"
   | "kagoshima"
-  | "okinawa";
-
-//地域管理
-export type JapanRegion =
-  | "hokkaido"
-  | "tohoku"
-  | "kanto"
-  | "chubu"
-  | "kansai"
-  | "chugoku"
-  | "shikoku"
-  | "kyushu"
   | "okinawa";

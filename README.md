@@ -1,56 +1,290 @@
-# Welcome to your Expo app 👋
+# 47 Villages
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 概要
 
-## Get started
+47 Villages は、日本全国47都道府県の旅行記録と、放置型の村づくり要素を組み合わせたモバイルアプリです。
 
-1. Install dependencies
+ユーザーが実際に訪れた都道府県を記録し、その進行状況に応じて村のオブジェクトや報酬が解放されていくような体験を目指しています。
 
-   ```bash
-   npm install
-   ```
+現在は、React Native / Expo / TypeScript を使用して、個人開発プロジェクトとして開発中です。
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## コンセプト
 
-In the output, you'll find options to open the app in a
+このアプリは、単なる旅行記録アプリではなく、旅行の記録がゲーム内の村づくりに反映されることを目的としています。
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+主なコンセプトは以下の通りです。
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- 日本全国47都道府県の訪問記録
+- 訪問済み / 未訪問の都道府県を地図上で可視化
+- 放置型ゲームのような村づくり要素
+- 家やオブジェクトの解放
+- ゴールド、経験値、レベルなどの成長要素
+- 旅行記録とゲーム進行の連動
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 使用技術
 
-```bash
-npm run reset-project
+- React Native
+- Expo
+- Expo Router
+- TypeScript
+- AsyncStorage
+- Git / GitHub
+
+---
+
+## 現在の開発状況
+
+現在は初期開発環境とディレクトリ構成の整理を行っています。
+
+完了済みの内容:
+
+- Expo プロジェクトの作成
+- TypeScript 環境の設定
+- Expo Router 用の `app/` ディレクトリ整理
+- `src/` 配下の画面・データ・型・機能の分離
+- メイン画面用ディレクトリの作成
+- 地図画面用ディレクトリの作成
+- 47都道府県システムの設計メモ作成
+- セーブデータ構造の設計メモ作成
+- 初期ハウスデータ、レベル計算、解放ロジックの準備
+
+---
+
+## ディレクトリ構成
+
+現在の基本方針は以下の通りです。
+
+```txt
+47villages/
+├─ app/
+│  ├─ _layout.tsx
+│  ├─ index.tsx
+│  ├─ village.tsx
+│  ├─ map.tsx
+│  ├─ shop.tsx
+│  ├─ inventory.tsx
+│  └─ settings.tsx
+│
+├─ src/
+│  ├─ components/
+│  ├─ constants/
+│  ├─ data/
+│  ├─ features/
+│  ├─ hooks/
+│  ├─ screens/
+│  │  ├─ mainScreen/
+│  │  └─ maps/
+│  ├─ storage/
+│  ├─ types/
+│  └─ utils/
+│
+├─ assets/
+│  ├─ images/
+│  └─ sounds/
+│
+├─ docs/
+├─ scripts/
+├─ package.json
+├─ app.json
+└─ tsconfig.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## ディレクトリ設計方針
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### `app/`
 
-## Learn more
+Expo Router のルーティング専用ディレクトリです。
 
-To learn more about developing your project with Expo, look at the following resources:
+画面の実装ロジックは直接書かず、`src/screens/` 配下の画面コンポーネントを呼び出す入口として使用します。
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+例:
 
-## Join the community
+```tsx
+import MapsScreen from "@/screens/maps/MapsScreen";
 
-Join our community of developers creating universal apps.
+export default MapsScreen;
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+### `src/screens/`
+
+画面単位の実装を管理します。
+
+現在は以下の画面を中心に構成しています。
+
+- `mainScreen/`  
+  放置型の村画面
+
+- `maps/`  
+  日本全国地図、都道府県の訪問記録、報酬表示など
+
+各画面内では、必要に応じて以下のように分離します。
+
+```txt
+components/
+types/
+data/
+features/
+utils/
+```
+
+---
+
+### `src/data/`
+
+アプリ全体で共有するマスターデータを配置します。
+
+例:
+
+- レベルテーブル
+- 初期ハウスデータ
+- ショップアイテム
+- アイテム情報
+- 都道府県の基本データ
+
+---
+
+### `src/features/`
+
+画面に依存しないゲームロジックを配置します。
+
+例:
+
+- プレイヤーレベル計算
+- 放置報酬計算
+- ハウス解放判定
+- ショップ購入処理
+- 都道府県解放処理
+
+---
+
+### `src/types/`
+
+アプリ全体で共有する TypeScript の型定義を配置します。
+
+例:
+
+- Player
+- GameState
+- House
+- Inventory
+- Item
+- Village
+
+---
+
+### `src/storage/`
+
+ゲームデータの保存・読み込み処理を管理します。
+
+現在は AsyncStorage を使用する想定です。
+
+---
+
+### `assets/`
+
+画像やサウンドなどの静的ファイルを管理します。
+
+```txt
+assets/images/
+assets/sounds/
+```
+
+地図、家、背景、アイコンなどの素材をここに配置します。
+
+---
+
+## 今後実装予定の機能
+
+今後は以下の順番で実装を進める予定です。
+
+1. ゲーム全体の型定義整理
+2. 初期ゲームデータの作成
+3. AsyncStorage を使った保存・読み込み処理
+4. メイン画面の基本 UI 作成
+5. ゴールド・経験値・レベルシステム
+6. 家オブジェクトの表示と解放
+7. 放置報酬計算
+8. 日本地図画面の作成
+9. 都道府県の訪問状態管理
+10. 訪問報酬・地域アイコン・テーマ機能
+11. ショップ機能
+12. インベントリ機能
+13. 設定画面
+14. Expo での実機確認
+15. 将来的なアプリストア公開準備
+
+---
+
+## セットアップ
+
+依存関係をインストールします。
+
+```bash
+npm install
+```
+
+開発サーバーを起動します。
+
+```bash
+npx expo start
+```
+
+TypeScript のチェックを実行します。
+
+```bash
+npx tsc --noEmit
+```
+
+Windows 環境では以下のように実行する場合があります。
+
+```bash
+npx.cmd tsc --noEmit
+```
+
+---
+
+## 開発メモ
+
+このプロジェクトでは、実装だけでなく、設計や学習内容も `docs/` 配下に記録しています。
+
+主なドキュメント:
+
+```txt
+docs/setup/
+docs/troubleshooting/
+docs/design/
+docs/logs/
+```
+
+開発中に発生した問題、設計判断、ディレクトリ構成の変更理由などを記録し、後から振り返れるようにしています。
+
+---
+
+## 開発目的
+
+このプロジェクトは、React Native / Expo を使ったモバイルアプリ開発の学習と、個人開発ポートフォリオの作成を目的としています。
+
+特に以下の点を意識して開発しています。
+
+- TypeScript を使った型安全な設計
+- 画面単位で整理されたディレクトリ構成
+- データ、ロジック、UI の分離
+- Expo Router を使ったルーティング
+- モバイルアプリとしての拡張性
+- 将来的なリリースを意識した構成
+
+---
+
+## ライセンス
+
+このプロジェクトは個人開発中のプロジェクトです。
+
+ライセンスについては今後整理予定です。
