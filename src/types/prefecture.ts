@@ -15,6 +15,15 @@ export type Prefecture = {
   rewardIds: RewardId[];
 };
 
+export type PrefectureVisitData = {
+  prefectureId: PrefectureId;
+  regionId: JapanRegionId;
+  visitCount: number;
+  firstVisitedAt: number | null;
+  lastVisitedAt: number | null;
+  earnedRewardIds: RewardId[];
+};
+
 //都道府県の管理
 export type PrefectureId =
   | "hokkaido"
