@@ -1,0 +1,59 @@
+{
+  "app": {
+    "title": "47 Villages"
+  },
+  "titleScreen": {
+    "startPrompt": "터치하여 시작"
+  },
+  "village": {
+    "playerName": "플레이어",
+    "level": "Lv. {{level}}",
+    "exp": "EXP {{current}} / {{required}}",
+    "title": "칭호 {{title}}",
+    "settings": "설정",
+    "gold": "Gold {{gold}}",
+    "shop": "상점",
+    "map": "지도",
+    "claimReward": "보상받기",
+    "inventory": "가방",
+    "menu": "메뉴"
+  },
+  "screens": {
+    "shop": "상점",
+    "map": "일본 지도",
+    "inventory": "가방",
+    "settings": "설정"
+  },
+  "settings": {
+    "language": "언어",
+    "korean": "한국어",
+    "japanese": "일본어",
+    "selected": "선택됨"
+  },
+  "tabs": {
+    "home": "홈",
+    "map": "지도",
+    "brand": "47 Villages",
+    "docs": "문서"
+  },
+  "titles": {
+    "beginnerMayor": "초보 촌장"
+  },
+  "houses": {
+    "house01": {
+      "name": "첫 번째 집"
+    },
+    "house02": {
+      "name": "두 번째 집"
+    },
+    "house03": {
+      "name": "세 번째 집"
+    },
+    "house04": {
+      "name": "네 번째 집"
+    },
+    "house05": {
+      "name": "다섯 번째 집"
+    }
+  }
+}
