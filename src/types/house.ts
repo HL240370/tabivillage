@@ -1,11 +1,12 @@
+import type { TranslationKey } from '@/i18n';
+
 export type HouseData = {
   id: string;
-  name : string;
+  nameKey: TranslationKey;
   level: number;
   skinId?: string;
   region: string;
   goldPerHour: number;
   expPerHour: number;
-  inUnlocked: boolean;
+  isUnlocked: boolean;
 };
-

@@ -1,0 +1,59 @@
+{
+  "app": {
+    "title": "47 Villages"
+  },
+  "titleScreen": {
+    "startPrompt": "タップして開始"
+  },
+  "village": {
+    "playerName": "プレイヤー",
+    "level": "Lv. {{level}}",
+    "exp": "EXP {{current}} / {{required}}",
+    "title": "称号 {{title}}",
+    "settings": "設定",
+    "gold": "Gold {{gold}}",
+    "shop": "ショップ",
+    "map": "地図",
+    "claimReward": "報酬を受け取る",
+    "inventory": "バッグ",
+    "menu": "メニュー"
+  },
+  "screens": {
+    "shop": "ショップ",
+    "map": "日本地図",
+    "inventory": "バッグ",
+    "settings": "設定"
+  },
+  "settings": {
+    "language": "言語",
+    "korean": "韓国語",
+    "japanese": "日本語",
+    "selected": "選択中"
+  },
+  "tabs": {
+    "home": "ホーム",
+    "map": "地図",
+    "brand": "47 Villages",
+    "docs": "ドキュメント"
+  },
+  "titles": {
+    "beginnerMayor": "初心者村長"
+  },
+  "houses": {
+    "house01": {
+      "name": "一軒目の家"
+    },
+    "house02": {
+      "name": "二軒目の家"
+    },
+    "house03": {
+      "name": "三軒目の家"
+    },
+    "house04": {
+      "name": "四軒目の家"
+    },
+    "house05": {
+      "name": "五軒目の家"
+    }
+  }
+}
